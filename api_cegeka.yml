@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
       - name: web-api
-        image: api_cegeka:latest
+        image: democegekaappacr.azurecr.io/api_cegeka:v1
         env:
         - name: POSTGRES_USER
           value: postgres
