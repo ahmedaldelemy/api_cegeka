@@ -32,7 +32,7 @@ acrLoginServer = democegekaappacr.azurecr.io
 4. get login server address: `az acr list --resource-group demoCegekaApp --query "[].{acrLoginServer:loginServer}" --output table`
 5. copy the addres recived from the CLI: `democegekaappacr.azurecr.io`
 6. tag your docker image using this command: `docker tag <name of the image>:<tag> democegekaappacr.azurecr.io/<name of the image><tag ex: v1>`
-    6a. example `docker tag api_cegeka:latest democegekaappacr.azurecr.io/cegeka_api-web:v1`
+    6a. example ` docker tag api_cegeka:latest democegekaappacr.azurecr.io/api_cegeka:v1`
 7. verify if your tag has been update by typing `docker images`
 8. Push the docker image to ACR: `docker push democegekaappacr.azurecr.io/api_cegeka:<tag>`
 9. list images in the registry: `az acr repository list --name democegekaappacr --output table`
