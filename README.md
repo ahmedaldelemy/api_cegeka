@@ -39,7 +39,7 @@ acrLoginServer = democegekaappacr.azurecr.io
 
 
 # Deploy kubernetes cluster
-1. create an kubernetes cluster: `az aks create --resource-group demoCegekaApp --tags owner=darren.siriram@cegeka.com --name cegekaCluster --node-count 2 --generate-ssh-keys --attach-acr democekeaapacr`
+1. create an kubernetes cluster: `az aks create --resource-group demoCegekaApp --tags owner=darren.siriram@cegeka.com --name cegekaCluster --node-count 2 --generate-ssh-keys --attach-acr democegekaappacr `
 2. install kubernetes CLI: `az aks install-cli` 
 3. connect to the cluster: `az aks get-credentials -- resource-group demoCegekaApp --name cegekaCluster`
 4. check if there is a connection: `kubectl get nodes`
