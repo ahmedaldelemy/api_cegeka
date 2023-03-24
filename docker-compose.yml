@@ -1,0 +1,40 @@
+version: "3.7"
+
+networks:
+  cegeka_network:
+    driver: bridge
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: cegeka
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    networks:
+      - cegeka_network
+    ports:
+      - "5432:5432"
+
+  web-api:
+    image: "docker.io/library/api_cegeka"
+    depends_on:
+      - db
+    container_name: web-api
+    ports:
+      - "5000:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=secret;Server=db;Port=5432;Database=cegeka;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - cegeka_network
+volumes:
+  app_data:
