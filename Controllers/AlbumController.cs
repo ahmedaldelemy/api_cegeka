@@ -22,4 +22,14 @@ public class AlbumController : ControllerBase
         var allAlbums = await _context.Albums.ToListAsync();
         return Ok(allAlbums);
     }
+    
+    // [HttpGet("{id}", Name = "GetAlbumById")]
+    // public async Task<IActionResult> Get(int id){
+    //     var album = await _context.Albums.FindAsync(id);
+    //     if (album == null)
+    //     {
+    //         return NotFound();
+    //     }
+    //     return Ok(album);
+    // }
 }
