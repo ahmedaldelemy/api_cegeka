@@ -9,5 +9,5 @@ public class ApiDbContext : DbContext
     {
     }
 
-    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Album> Albums { get; set; }
 } 
