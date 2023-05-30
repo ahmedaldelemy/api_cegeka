@@ -23,8 +23,8 @@ demo api
 **RGname** = `demoCegekaApp` <br>
 **ACR name** = `democegekaappacr` <br>
 **acrLoginServer** = `democegekaappacr.azurecr.io` <br>
-**DockerSource** = `democegekaappacr.azurecr.io/cegeka_api-web:<tag>`
-<br>
+**DockerSource** = `democegekaappacr.azurecr.io/cegeka_api-web:<tag>`<br>
+**AKS name** = `CegekaCluster`
 
 # Create container registry
 ## commands used for setting up ACR environment
