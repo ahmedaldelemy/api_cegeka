@@ -26,12 +26,11 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region: us-east-1
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-    - name: Build, tag and push image to Amazon ecr
+    - name: Build, tag and push image to Amazon ECR
       id: build-image
       env:
         ECR_REGISTRY: 361200556153.dkr.ecr.us-east-1.amazonaws.com
@@ -41,16 +40,16 @@ jobs:
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.run_number }}
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.run_number }}
     - name: Fill in the new image ID in the Amazon ECS task definition
-     id: task-def
-     uses: aws-actions/amazon-ecs-render-task-definition@v1
-     with:
-       task-definition: task-definition.json
-       container-name: AlbumContainer
-       image: 744817277192.dkr.ecr.us-east-1.amazonaws.com/cegeka/api:${{github.run_number}}
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: AlbumContainer
+        image: 744817277192.dkr.ecr.us-east-1.amazonaws.com/cegeka/api:${{ github.run_number }}
     - name: Deploy Amazon ECS task definition
-     uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-     with:
-       task-definition: ${{ steps.task-def.outputs.task-definition }}
-       service: AlbumServiceBlueGreen
-       cluster: AlbumCluster
-       wait-for-service-stability: true
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: AlbumServiceBlueGreen
+        cluster: AlbumCluster
+        wait-for-service-stability: true
