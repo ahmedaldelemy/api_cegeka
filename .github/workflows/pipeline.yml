@@ -34,7 +34,7 @@ jobs:
     - name: Build, tag and push image to Amazon ecr
       id: build-image
       env:
-        ECR_REGISTRY: 744817277192.dkr.ecr.us-east-1.amazonaws.com
+        ECR_REGISTRY: 361200556153.dkr.ecr.us-east-1.amazonaws.com
         ECR_REPOSITORY: cegeka/api
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
