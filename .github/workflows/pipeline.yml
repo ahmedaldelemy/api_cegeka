@@ -36,7 +36,7 @@ jobs:
       env:
         ECR_REGISTRY: 361200556153.dkr.ecr.us-east-1.amazonaws.com
         ECR_REPOSITORY: cegeka/api
-      run: |
+      run: 
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.run_number }}
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.run_number }}
