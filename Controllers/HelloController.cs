@@ -21,9 +21,9 @@ public class HelloController : ControllerBase
         return Ok(gs.greeting());
     }
     
-    // [HttpGet("v2")]
-    // public async Task<IActionResult> Hellov2(string name)
-    // {
-    //     return Ok(gs.greeting(name));
-    // }
+    [HttpGet("v2")]
+    public async Task<IActionResult> Hellov2(string name)
+    {
+        return Ok(gs.greeting(name));
+    }
 }
